@@ -9,5 +9,8 @@ RSpec.describe State, type: :model do
   it {should validate_presence_of(:name)}
 
   it {should have_many(:cities)}
+  it {should have_many(:users)}
+
+  it { should have_many(:users).with_foreign_key('company_state_id')}
 
 end

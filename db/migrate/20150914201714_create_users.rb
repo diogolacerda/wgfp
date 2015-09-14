@@ -35,8 +35,10 @@ class CreateUsers < ActiveRecord::Migration
       t.string :cnpj
       t.string :company_zip_code
       t.integer :company_city_id
+      t.integer :company_state_id
       t.string :company_street
       t.string :company_district
+
 
       t.timestamps null: false
     end
