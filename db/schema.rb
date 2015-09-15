@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150914224626) do
+ActiveRecord::Schema.define(version: 20150915203648) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -33,6 +33,43 @@ ActiveRecord::Schema.define(version: 20150914224626) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "investment_answers", force: :cascade do |t|
+    t.string   "answer"
+    t.integer  "investment_question_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "investment_answers", ["investment_question_id"], name: "index_investment_answers_on_investment_question_id"
+
+  create_table "investment_answers_users", force: :cascade do |t|
+    t.integer "investment_answer_id"
+    t.integer "user_id"
+  end
+
+  add_index "investment_answers_users", ["investment_answer_id"], name: "index_investment_answers_users_on_investment_answer_id"
+  add_index "investment_answers_users", ["user_id"], name: "index_investment_answers_users_on_user_id"
+
+  create_table "nationalities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "objectives", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "objectives_users", force: :cascade do |t|
+    t.integer "objective_id"
+    t.integer "user_id"
+  end
+
+  add_index "objectives_users", ["objective_id"], name: "index_objectives_users_on_objective_id"
+  add_index "objectives_users", ["user_id"], name: "index_objectives_users_on_user_id"
 
   create_table "profiles", force: :cascade do |t|
     t.string   "name"

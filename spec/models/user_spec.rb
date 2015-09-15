@@ -20,9 +20,9 @@ RSpec.describe User, type: :model do
   it { should belong_to(:civil_state)}
   it { should belong_to(:nationality)}
 
-  it {should belong_to(:company_city_id).class_name('City')}
+  it {should belong_to(:company_city).class_name('City')}
 
-  it {should have_and_belong_to_many(:investiment_answers)}
+  it {should have_and_belong_to_many(:investment_answers)}
   it {should have_and_belong_to_many(:objectives)}
 
   it { should have_many(:users).with_foreign_key('consultant_id')}

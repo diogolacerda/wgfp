@@ -12,8 +12,11 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name, :email
 
-  belongs_to :company_city_id, :class_name => 'City'
+  belongs_to :company_city, :class_name => 'City'
+
 	has_many :users, :foreign_key => 'consultant_id'
 
+  has_and_belongs_to_many :investment_answers
+  has_and_belongs_to_many :objectives
 
 end
