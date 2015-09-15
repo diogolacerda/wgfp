@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150915203648) do
+ActiveRecord::Schema.define(version: 20150915205713) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -50,6 +50,12 @@ ActiveRecord::Schema.define(version: 20150915203648) do
 
   add_index "investment_answers_users", ["investment_answer_id"], name: "index_investment_answers_users_on_investment_answer_id"
   add_index "investment_answers_users", ["user_id"], name: "index_investment_answers_users_on_user_id"
+
+  create_table "investment_questions", force: :cascade do |t|
+    t.string   "question"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "nationalities", force: :cascade do |t|
     t.string   "name"

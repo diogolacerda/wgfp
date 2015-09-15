@@ -1,7 +1,8 @@
+require 'faker'
+
 FactoryGirl.define do
   factory :investment_answer do
-    answer "MyString"
-investment_question nil
+    answer {Faker::Hacker.say_something_smart}
   end
 
 end
