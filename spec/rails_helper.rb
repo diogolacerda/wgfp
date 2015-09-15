@@ -36,6 +36,19 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
 
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
+
+  Capybara.default_max_wait_time = 15
+  
+  Faker::Config.locale = 'pt-BR'
+  #config.include(EmailSpec::Helpers)
+  #config.include(EmailSpec::Matchers)
+  config.include LoginMacros
+  #config.include WaitForAjax
+  #config.include BaypassInputMask
+
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
