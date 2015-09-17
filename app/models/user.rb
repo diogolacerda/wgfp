@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   belongs_to :civil_state
   belongs_to :nationality
   belongs_to :graduation
+  belongs_to :bank
 
   validates :email, :email => true
 

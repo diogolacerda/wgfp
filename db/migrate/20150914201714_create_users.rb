@@ -38,6 +38,9 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :company_state_id
       t.string :company_street
       t.string :company_district
+      t.references :bank, index: true, foreign_key: true
+      t.string :agency
+      t.string :account
 
 
       t.timestamps null: false

@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150915205713) do
+ActiveRecord::Schema.define(version: 20150917223143) do
+
+  create_table "banks", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -128,10 +134,14 @@ ActiveRecord::Schema.define(version: 20150915205713) do
     t.integer  "company_state_id"
     t.string   "company_street"
     t.string   "company_district"
+    t.integer  "bank_id"
+    t.string   "agency"
+    t.string   "account"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
 
+  add_index "users", ["bank_id"], name: "index_users_on_bank_id"
   add_index "users", ["city_id"], name: "index_users_on_city_id"
   add_index "users", ["civil_state_id"], name: "index_users_on_civil_state_id"
   add_index "users", ["graduation_id"], name: "index_users_on_graduation_id"

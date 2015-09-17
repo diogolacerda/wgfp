@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+
+	skip_before_filter :authenticate_user
   
   def new
   end
@@ -7,12 +9,20 @@ class SessionsController < ApplicationController
   	user = User.find_by_email params[:email]
   	if user && user.authenticate(params[:password])
 
-  		session[:user_id] = user.id
+  		if user.is_blocked
+  			gflash :now, :error => "Usuário inativado"
+  			render "new"
 
-			gflash :success => "Bem-vindo!"
+  			
 
-  		redirect_to root_path
-  		
+
+  			
+  		else	
+	  		session[:user_id] = user.id
+				gflash :success => "Bem-vindo!"
+	  		redirect_to users_index_path
+	  	end
+  			
   	else
   		gflash :now, :error => "Usuário não encontrado"
       render "new"

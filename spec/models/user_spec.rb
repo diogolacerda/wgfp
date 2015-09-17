@@ -19,6 +19,7 @@ RSpec.describe User, type: :model do
   it { should belong_to(:graduation)}
   it { should belong_to(:civil_state)}
   it { should belong_to(:nationality)}
+  it { should belong_to(:bank)}
 
   it {should belong_to(:company_city).class_name('City')}
 

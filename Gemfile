@@ -12,6 +12,9 @@ gem 'email_validator'
 gem 'bcrypt-ruby'
 gem "gritter", :git => 'git://github.com/vmamaev/gritter.git'
 
+# Validaçàp de CPF e CNPJ
+#gem 'brazilian-rails'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
@@ -36,6 +39,7 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails'
   gem 'sqlite3'
+  gem 'cpf_faker'
 end
 group :production do
   gem 'pg'
