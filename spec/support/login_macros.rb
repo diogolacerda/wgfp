@@ -3,7 +3,7 @@ module LoginMacros
 		visit new_session_path
 		fill_in 'email', with: user_email
 		fill_in 'password', with: user_pass
-		click_button "Enviar"
+		click_button "Acessar"
 	end
 
 	def logout

@@ -10,6 +10,7 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'email_validator'
 gem 'bcrypt-ruby'
+gem "gritter", :git => 'git://github.com/vmamaev/gritter.git'
 
 group :development, :test do
   gem 'byebug'
