@@ -9,14 +9,15 @@ class SessionsController < ApplicationController
   	user = User.find_by_email params[:email]
   	if user && user.authenticate(params[:password])
 
-  		if user.is_blocked
-  			gflash :now, :error => "Usuário inativado"
-  			render "new"
-
+  		if user.is_blocked || !user.is_activated
   			
+  			if user.is_blocked
+          gflash :now, :error => "Usuário bloqueado"
+        else
+          gflash :error => "Usuário inativado"
+        end
+        render "new" 
 
-
-  			
   		else	
 	  		session[:user_id] = user.id
 				gflash :success => "Bem-vindo!"

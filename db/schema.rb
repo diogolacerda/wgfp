@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 20150917223143) do
     t.integer  "bank_id"
     t.string   "agency"
     t.string   "account"
+    t.boolean  "is_activated"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end

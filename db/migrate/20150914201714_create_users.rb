@@ -41,6 +41,7 @@ class CreateUsers < ActiveRecord::Migration
       t.references :bank, index: true, foreign_key: true
       t.string :agency
       t.string :account
+      t.boolean :is_activated
 
 
       t.timestamps null: false

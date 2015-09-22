@@ -5,9 +5,15 @@ FactoryGirl.define do
     email {Faker::Internet.email}	
 		name {Faker::Name.name}
 		password {Faker::Internet.password(8)}
+		is_activated true
+		is_blocked false
 
 		trait :blocked do
 			is_blocked true
+		end
+
+		trait :not_activated do
+			is_activated false
 		end
 		
 		trait :incomplete_register do

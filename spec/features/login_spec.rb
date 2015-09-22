@@ -29,6 +29,12 @@ feature "Login" do
     scenario "is blocked" , js:true do
     	blocked_user = create(:user, :blocked, :profile_id => 3)
     	login(blocked_user.email, blocked_user.password)
+    	expect(page).to have_content 'Usuário bloqueado'
+    end
+
+    scenario "is inactivated" , js:true do
+    	inactivated_user = create(:user, :not_activated, :profile_id => 3)
+    	login(inactivated_user.email, inactivated_user.password)
     	expect(page).to have_content 'Usuário inativado'
     end
 
