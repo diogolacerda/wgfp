@@ -31,6 +31,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+  	session[:user_id] = nil
+  	gflash :success => "Até logo"
+  	redirect_to root_url
   end
 
 end

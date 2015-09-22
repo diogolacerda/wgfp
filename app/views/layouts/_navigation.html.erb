@@ -1,19 +1,52 @@
-<%# navigation styled for Bootstrap 3.0 %>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to 'Home', root_path, class: 'navbar-brand' %>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <%= render 'layouts/navigation_links' %>
-      </ul>
-    </div>
-  </div>
-</nav>
+<% if @current_user %>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="<%= root_path %>">
+          Logo
+        </a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a  href="<%= root_path%>">Home</a>
+          </li>
+          <!-- Single button -->
+          <li>
+            <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Ficha cadastro<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="">Dados Pessoais</a>
+              </li>
+              <li>
+                <a href="">Objetivo</a>
+              </li>
+              <li>
+                <a href="">Perfil de investidor</a>
+              </li>
+              <li>
+                <a href="">Dados Complementares</a>
+              </li>
+              <li>
+                <a href="">Senha de Acesso</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a  href="<%= root_path%>">Perfil</a>
+          </li>
+
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="<%= log_out_path %>">Sair</a>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+  </nav>
+<% end %>
