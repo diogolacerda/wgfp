@@ -5,6 +5,7 @@ FactoryGirl.define do
     email {Faker::Internet.email}	
 		name {Faker::Name.name}
 		password {Faker::Internet.password(8)}
+		activation_token SecureRandom.urlsafe_base64
 		is_activated true
 		is_blocked false
 

@@ -1,18 +1,15 @@
 Rails.application.routes.draw do
 
-  get 'users/index'
-
-  get 'users/new'
-
-  get 'users/edit'
-
   get 'home/index'
-
-	# Login
+  root 'home#index'
+  
+  # Login
   resources :sessions
   # Logout
   get 'log_out', :to => 'sessions#destroy', :as => 'log_out'
 
-  root 'home#index'
+  resources :users
+  get 'activate_account/:activation_token', :to => 'users#activate_account', :as => 'activate_account'
+
 	
 end
