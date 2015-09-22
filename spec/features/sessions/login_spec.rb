@@ -9,7 +9,7 @@ feature "Login" do
       adm = create(:user, :profile_id => 1)
       login(adm.email, adm.password)
       expect(page).to have_content "Bem-vindo!"
-      expect(current_path).to eq users_index_path
+      expect(current_path).to eq users_path
     end
 
   end
@@ -19,7 +19,7 @@ feature "Login" do
       adm = create(:user, :profile_id => 2)
       login(adm.email, adm.password)
       expect(page).to have_content "Bem-vindo!"
-      expect(current_path).to eq users_index_path
+      expect(current_path).to eq users_path
     end
 
   end
@@ -42,7 +42,7 @@ feature "Login" do
     	user = create(:user, :incomplete_register, :profile_id => 3)
     	login(user.email, user.password)
     	expect(page).to have_content 'Bem-vindo!'
-    	expect(current_path).to eq users_new_path
+    	expect(current_path).to eq new_user_path
     end
 
     scenario "complete register" , js:true do

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
       @user.update_column(:is_activated, true)
       session[:user_id] = @user.id
       gflash :success => "Acesso validado com sucesso"
-      redirect_to root_path
+      redirect_to new_user_path
     end
   end
 

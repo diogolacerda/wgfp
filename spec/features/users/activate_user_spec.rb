@@ -11,5 +11,6 @@ feature 'User - Activate' do
     }.to change { user.is_activated }.from(false).to(true)
     
     expect(page).to have_content "Acesso validado com sucesso"
+    expect(current_path).to eq new_user_path
   end
 end

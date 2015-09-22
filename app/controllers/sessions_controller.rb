@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
   	if user && user.authenticate(params[:password])
 
   		if user.is_blocked || !user.is_activated
-  			
+
   			if user.is_blocked
           gflash :now, :error => "Usuário bloqueado"
         else
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
   		else	
 	  		session[:user_id] = user.id
 				gflash :success => "Bem-vindo!"
-	  		redirect_to users_index_path
+	  		redirect_to users_path
 	  	end
   			
   	else
