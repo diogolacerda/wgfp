@@ -6,6 +6,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'shoulda/matchers'
+require 'email_spec'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -43,8 +44,8 @@ RSpec.configure do |config|
   Capybara.default_max_wait_time = 15
   
   Faker::Config.locale = 'pt-BR'
-  #config.include(EmailSpec::Helpers)
-  #config.include(EmailSpec::Matchers)
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
   config.include LoginMacros
   #config.include WaitForAjax
   #config.include BaypassInputMask

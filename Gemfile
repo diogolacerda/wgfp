@@ -40,6 +40,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'sqlite3'
   gem 'cpf_faker'
+  gem 'email_spec'
 end
 group :production do
   gem 'pg'
