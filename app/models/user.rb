@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+
+  attr_accessor :skip_validate_pass
+
   belongs_to :state
   belongs_to :city
   belongs_to :profile
@@ -19,5 +22,9 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :investment_answers
   has_and_belongs_to_many :objectives
+
+  validates :email, :email => true, :uniqueness => true
+
+  validates_length_of :password, :minimum => 6 #, if: Proc.new { |user| user.skip_validate_pass != true }
 
 end

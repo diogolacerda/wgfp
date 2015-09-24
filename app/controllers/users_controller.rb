@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
  
-	skip_before_filter :authenticate_user, :except => [:index, :new_admin, :edit]
-	
+	skip_before_filter :authenticate_user, :except => [:index, :edit]
+
   def activate_account
     @user = User.find_by_activation_token params[:activation_token]
     if @user
@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   end
 
   def create_recovery_pass
-
   	user = User.find_by_email params[:email]
 
   	if user
@@ -38,16 +37,15 @@ class UsersController < ApplicationController
       render 'recovery_pass'
 
   	end
-
   end	
 
   def edit_pass
-
   	if params[:recovery_token]
       # efetua logoff para evitar de alterar senha do user logado
       session[:user_id] = nil
   		@user = User.find_by_recovery_token params[:recovery_token]
   	end
+
   	if current_user
 			@user = current_user
   	end
@@ -56,7 +54,30 @@ class UsersController < ApplicationController
   		gflash :error => "Usuário não encontrado"
       redirect_to root_path
   	end
+  end
 
+  def update_pass
+  	@user = User.find params[:id]
+  	if @user.update_attributes(user_params)
+  		# Autentica o user
+  		session[:user_id] = @user.id
+
+  		gflash :success
+  		redirect_to root_path
+  	else
+  		gflash :error => @user.errors.full_messages.join('<br>')
+      redirect_to edit_pass_path @user
+  	end
+  end
+  
+  private
+  def user_params
+    params.require(:user).permit(
+      :name,
+      :email,
+      :password,
+      :password_confirmation
+    )
   end
 
 end

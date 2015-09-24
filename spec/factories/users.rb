@@ -16,6 +16,10 @@ FactoryGirl.define do
 		trait :not_activated do
 			is_activated false
 		end
+
+		trait :recovered do
+			recovery_token {Faker::Internet.password}
+		end
 		
 		trait :incomplete_register do
 
