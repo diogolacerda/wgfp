@@ -16,9 +16,28 @@ class UsersController < ApplicationController
   end
 
   def new
+  	@user = User.new
   end
 
   def edit
+  end
+
+  def create
+  	@user = User.new user_params
+    
+    # Define o user como cliente
+    @user.profile_id = 3
+
+    @user.activation_token = SecureRandom.urlsafe_base64
+    if @user.save
+      # Envia email para usuário ativar seu cadastro
+      ApplicationMailer.new_user_message(@user).deliver_now
+      gflash :success => "Seu cadastro foi realizado, mas para sua segurança, solicitamos que acesse a conta de e-mail cadastrada e acesse o link para validação de seus dados. Obrigado!"
+      redirect_to new_session_path
+    else
+      gflash :now, :error => @user.errors.full_messages.join('<br>')
+      render 'new'
+    end
   end
 
   def create_recovery_pass
@@ -69,7 +88,7 @@ class UsersController < ApplicationController
       redirect_to edit_pass_path @user
   	end
   end
-  
+
   private
   def user_params
     params.require(:user).permit(

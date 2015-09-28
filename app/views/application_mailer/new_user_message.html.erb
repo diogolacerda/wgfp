@@ -1,0 +1,17 @@
+<%= render :partial => 'application_mailer/header' %>
+
+<h1>Conclusão do cadastro no site da WG Finanças</h1>
+
+<p>
+	Olá <%= @user.name %>
+	<br><br>
+	Para efetivação do seu cadastro e validação de sua conta de e-mail clique no link: 
+	<br><br>
+	<%= activate_account_url(@user.activation_token) %>
+	<br><br>
+	Obrigado, Equipe WG Finanças.
+</p>
+
+<%= render :partial => 'application_mailer/footer' %>
+
+
