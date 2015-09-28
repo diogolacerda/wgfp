@@ -11,6 +11,10 @@ gem 'simple_form'
 gem 'email_validator'
 gem 'bcrypt-ruby'
 gem "gritter", :git => 'git://github.com/vmamaev/gritter.git'
+# Datagrid
+gem 'datagrid'
+
+gem "kaminari"
 
 # Validaçàp de CPF e CNPJ
 #gem 'brazilian-rails'

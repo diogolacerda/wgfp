@@ -13,6 +13,9 @@ class UsersController < ApplicationController
   end
 
   def index
+  	@grid = UsersGrid.new(params[:users_grid]) do |scope|
+			scope.page params[:page]
+		end
   end
 
   def new

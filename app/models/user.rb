@@ -18,7 +18,9 @@ class User < ActiveRecord::Base
 
   belongs_to :company_city, :class_name => 'City'
 
-	has_many :users, :foreign_key => 'consultant_id'
+  belongs_to :consultant, :class_name => 'User'
+
+  has_many :users, :foreign_key => 'consultant_id'
 
   has_and_belongs_to_many :investment_answers
   has_and_belongs_to_many :objectives

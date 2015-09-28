@@ -23,6 +23,7 @@ RSpec.describe User, type: :model do
   it { should belong_to(:bank)}
 
   it {should belong_to(:company_city).class_name('City')}
+  it {should belong_to(:consultant).class_name('User')}
 
   it {should have_and_belong_to_many(:investment_answers)}
   it {should have_and_belong_to_many(:objectives)}
