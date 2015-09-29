@@ -9,6 +9,15 @@ class UsersGrid
     User.includes(:state)
   end
 
+
+  filter(:state_id, :enum, :include_blank => '-- Selecione um Estado --', :select => proc { State.all.map {|c| [c.name, c.id] }}, :header => "Estado")
+
+  filter(:name, :string, :header => "Nome Completo") do |value|
+    self.where("proposals.name LIKE ? ", "%#{value}%")
+  end
+
+  filter(:consultant_id, :enum, :include_blank => '-- Selecione um Consultor --', :reject_if => "@current_user.profile_id != 1", :select => proc { User.where(:profile_id => 2).map {|c| [c.name, c.id] }}, :header => "Consultor")
+
   column(:name, :html => true, :header => "Nome Completo")
   column(:email, :html => true, :header => "Email")
   column(:phone, :html => true, :header => "Telefone")
@@ -23,16 +32,4 @@ class UsersGrid
       record.city.name
     end
   end
-  column(:consultant, :html => true, :header => "Consultor") do |record|
-  	if record.consultant
-      record.consultant.name
-    end
-  end
-  column(:is_blocked, :html => true, :header => "Status")
-
-  column(:actions, :html => true, :header => "Ações") do |record|
-    render "datagrid_actions", :object => record  
-  end
-
-
 end
