@@ -7,13 +7,14 @@ class UsersGrid
     User.includes(:profile)
     User.includes(:city)
     User.includes(:state)
+    User.includes(:consultant)
   end
 
 
   filter(:state_id, :enum, :include_blank => '-- Selecione um Estado --', :select => proc { State.all.map {|c| [c.name, c.id] }}, :header => "Estado")
 
   filter(:name, :string, :header => "Nome Completo") do |value|
-    self.where("proposals.name LIKE ? ", "%#{value}%")
+    self.where("users.name LIKE ? ", "%#{value}%")
   end
 
   filter(:consultant_id, :enum, :include_blank => '-- Selecione um Consultor --', :reject_if => "@current_user.profile_id != 1", :select => proc { User.where(:profile_id => 2).map {|c| [c.name, c.id] }}, :header => "Consultor")
