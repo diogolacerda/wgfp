@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'home/index'
   root 'home#index'
+
+  resources :admin_users
   
   # Login
   resources :sessions

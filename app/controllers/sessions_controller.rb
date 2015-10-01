@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
   		else	
 	  		session[:user_id] = user.id
 				gflash :success => "Bem-vindo!"
-	  		redirect_to users_path
+	  		redirect_to admin_users_path
 	  	end
   			
   	else

@@ -4,11 +4,9 @@ feature 'User - list' do
 
 
 		scenario 'redirect to login when not logged' do
-		  visit users_path
+		  visit admin_users_path
 		  expect(current_path).to eql(new_session_path) 
 		end
-
-
 
 		scenario "State Filter", js:true do
 
@@ -23,7 +21,7 @@ feature 'User - list' do
 			user = create(:user, :profile_id => 1)
 	    login(user.email, user.password)
 	    sleep 1
-	    visit users_path
+	    visit admin_users_path
 
 
 	    select state1.name, from: "users_grid[state_id]"
@@ -47,7 +45,7 @@ feature 'User - list' do
 			user = create(:user, :profile_id => 1)
 	    login(user.email, user.password)
 	    sleep 10
-	    visit users_path
+	    visit admin_users_path
 
 
 	    fill_in "users_grid[name]", with: name1
@@ -66,7 +64,7 @@ feature 'User - list' do
 			user = create(:user, :profile_id => 1)
 	    login(user.email, user.password)
 	    sleep 1
-	    visit users_path
+	    visit admin_users_path
 
 	    within("table.users_grid") do
 	     expect(page).to have_content "Nome Completo"
@@ -94,7 +92,7 @@ feature 'User - list' do
 			user = create(:user, :profile_id => 1)
 	    login(user.email, user.password)
 	    sleep 10
-	    visit users_path
+	    visit admin_users_path
 
 	    select consult1.name, from: "users_grid[consultant_id]"
 			click_button "Filtrar"
@@ -116,7 +114,7 @@ feature 'User - list' do
 			user = create(:user, :profile_id => 2)
 	    login(user.email, user.password)
 	    sleep 1
-	    visit users_path
+	    visit admin_users_path
 
 	    within("table.users_grid") do
 	     expect(page).to have_content "Nome Completo"
