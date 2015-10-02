@@ -4,6 +4,7 @@ module LoginMacros
 		fill_in 'email', with: user_email
 		fill_in 'password', with: user_pass
 		click_button "Acessar"
+		sleep 1
 	end
 
 	def logout

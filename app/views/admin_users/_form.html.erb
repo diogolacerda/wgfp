@@ -1,0 +1,39 @@
+<%= simple_form_for @user, :url => path, defaults: { input_html: {class: 'form-control'}} do |f| %>
+  
+  <div class="col-xs-6">
+
+    <%= f.input :is_blocked, :label => "Bloqueado?" %>
+  	<div class="form-group">
+      <label for="">Perfil*</label>
+      <%= f.association :profile, :collection => Profile.where.not(:id => 3), label: false, :include_blank => '-- Selecione um perfil --'  %>
+    </div>
+
+  	<div class="form-group">
+      <label for="">Nome*</label>
+      <%= f.input :name, label: false %>
+    </div>
+
+  	<div class="form-group">
+      <label for="">Email*</label>
+      <%= f.input :email, label: false %>
+    </div>
+
+    <%if @user.id == nil%>
+      <div class="form-group">
+        <label for="">Senha*</label>
+        <%= f.input :password, label: false, input_html: { class: 'form-control wysiwyg' } %>
+      </div>
+    <%end%>
+
+  </div>
+
+  <div class="col-xs-12">
+
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+    </div>
+
+  </div>
+
+<% end %>

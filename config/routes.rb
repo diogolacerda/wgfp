@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :admin_users
+  post 'create_admin_user', :to => 'admin_users#create', :as => 'create_admin_user'
   
   # Login
   resources :sessions

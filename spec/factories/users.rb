@@ -8,6 +8,7 @@ FactoryGirl.define do
 		activation_token SecureRandom.urlsafe_base64
 		is_activated true
 		is_blocked false
+		profile_id 1
 
 		trait :blocked do
 			is_blocked true
@@ -19,6 +20,18 @@ FactoryGirl.define do
 
 		trait :recovered do
 			recovery_token {Faker::Internet.password}
+		end
+
+		trait :admin do
+			profile_id 1
+		end
+
+		trait :consult do
+			profile_id 2
+		end
+
+		trait :client do
+			profile_id 3
 		end
 		
 		trait :incomplete_register do

@@ -261,7 +261,7 @@ pt-BR:
         password: "Senha"
         password_confirmation: "Confirmação de Senha"
         is_blocked: "Bloqueado"
-        user_type: "Perfil"
+        profile_id: "Perfil"
         evaluation_area: "Área de Avaliação"
       proposal_team:
         name: "Nome"

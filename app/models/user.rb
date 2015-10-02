@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  validates_presence_of :name, :email
+  validates_presence_of :name, :email, :profile_id
 
   belongs_to :company_city, :class_name => 'City'
 
@@ -27,6 +27,6 @@ class User < ActiveRecord::Base
 
   validates :email, :email => true, :uniqueness => true
 
-  validates_length_of :password, :minimum => 6 #, if: Proc.new { |user| user.skip_validate_pass != true }
+  validates_length_of :password, :minimum => 6, if: Proc.new { |user| user.skip_validate_pass != true }
 
 end
