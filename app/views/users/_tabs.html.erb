@@ -1,0 +1,30 @@
+
+<ul class="nav nav-tabs" role="tablist">
+
+  <!-- Dados pessoais -->
+  <li class="<%= 'active' if params[:step_number].to_i == 1 %>" role="presentation" class="active">
+    <a href="<%= user_step_path @current_user.id, 1 %>" >Dados pessoais</a>
+  </li>
+
+  <!-- Objetivos -->
+  <li class="<%= 'active' if params[:step_number].to_i == 2 %>" role="presentation">
+    <a href="<%= user_step_path @current_user.id, 2 %>" >Objetivo</a>
+  </li>
+
+  <!-- Perfil de investidor -->
+  <li class="<%= 'active' if params[:step_number].to_i == 3 %>" role="presentation">
+    <a href="<%= user_step_path @current_user.id, 3 %>" >Perfil de investidor</a>
+  </li>
+
+  <!-- Dados complementares -->
+  <li class="<%= 'active' if params[:step_number].to_i == 4 %>" role="presentation">
+    <a href="<%= user_step_path @current_user.id, 4 %>" >Dados complementares</a>
+  </li>
+
+  <!-- senha de acesso -->
+  <li class="<%= 'active' if params[:step_number].to_i == 5 %>" role="presentation">
+    <a href="<%= user_step_path @current_user.id, 5 %>" >Senha de acesso</a>
+  </li>
+
+
+</ul>

@@ -61,6 +61,7 @@ FactoryGirl.define do
 
 		trait :complete_register do
 
+			profile_id 3
 			email_secondary {Faker::Internet.email}	
 			cpf {Faker::CPF.pretty}
 			rg "MG 12.231.232"

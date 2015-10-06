@@ -1,0 +1,133 @@
+<%= simple_form_for @user, defaults: { input_html: {class: 'form-control'}} do |f| %>
+  <%= hidden_field_tag "user[step]", 1 %>
+  <%= hidden_field_tag "step_number", params[:step_number] %>
+  <br>
+  <div role="tabpanel" class="tab-pane active" id="user-1">
+    <div class="row">
+
+      <!-- lado esquerdo -->
+      <div id="step1-left" class="col-xs-6">
+
+        <!-- perfil -->
+        <div class="form-group">
+          <label for="">Planejador:</label>
+          <%= f.association :consultant, label: false%>
+        </div>
+
+        <div class="form-group">
+          <label for="">Email*</label>
+          <%= f.input :email, label: false %>
+        </div>
+
+        <div class="form-group">
+          <label for="">Email Secundário*</label>
+          <%= f.input :email_secondary, label: false %>
+        </div>
+
+        <div class="form-group">
+          <label for="">Nome Completo*</label>
+          <%= f.input :name, label: false %>
+        </div>
+
+        <!-- CPF + RG -->
+        <div class="pf-fields">
+          <!-- CPF -->
+          <div class="form-group">
+            <label for="">CPF*</label>
+            <%= f.input :cpf, label: false, input_html: {class: "form-control cpf"} %>
+          </div>
+
+          <!-- RG -->
+          <div class="form-group">
+            <label for="">RG*</label>
+            <%= f.input :rg, label: false, placeholder: '99999-999' %>
+          </div>
+
+          <div class="form-group">
+            <label for="">Orgão emissor*</label>
+            <%= f.input :issuer, label: false%>
+          </div>
+
+        </div>
+
+        <!-- telefone -->
+        <div class="form-group">
+          <label for="">Telefone</label>
+          <%= f.input :phone, label: false, input_html: {class: "form-control phone"} %>
+        </div>
+
+        <div class="form-group">
+          <label for="">Celular*</label>
+          <%= f.input :celphone, label: false, input_html: {class: "form-control phone"} %>
+        </div>
+
+      </div>
+
+      <div id="step1-right" class="col-xs-6" style="margin-top:180px;">
+
+        <div class="form-group">
+          <label for="">Data de nascimento*</label>
+          <%= f.input :birthday, label: false%>
+        </div>
+
+        <div class="form-group">
+          <label for="">Estado civil*</label>
+          <%= f.association :civil_state, label: false%>
+        </div>
+
+        <div class="form-group">
+          <label for="">Nacionalidade*</label>
+          <%= f.association :nationality, label: false%>
+        </div>
+
+        <div class="form-group">
+          <label for="">Profissão*</label>
+          <%= f.input :profession, label: false%>
+        </div>
+
+        <!-- CEP -->
+        <div class="form-group">
+          <label for="">CEP*</label>
+          <%= f.input :zip_code, label: false, input_html: {class: "form-control cep"} %>
+        </div>
+
+        <!-- endereço -->
+        <div class="form-group">
+          <label for="">Endereço*</label>
+          <%= f.input :street, label: false, input_html: {autocomplete: false} %>
+        </div>
+
+        <div class="form-group">
+          <label for="">Complemento</label>
+          <%= f.input :complement, label: false%>
+        </div>
+
+        <div class="form-group">
+          <label for="">Bairro*</label>
+          <%= f.input :district, label: false%>
+        </div>
+
+        <!-- estado -->
+        <div class="form-group">
+          <label for="">Estado*</label>
+          <%= f.association :state, label: false %>
+        </div>        
+
+        <!-- cidade -->
+        <div class="form-group">
+          <label for="">Cidade*</label>
+          <%= f.association :city, label: false %>
+        </div>
+
+        
+      </div>
+
+      <div class="col-xs-12">
+        <% #if !@user.is_published %>
+          <button type="submit" class="btn btn-primary pull-right">Salvar e ir para o próximo</button>
+        <%# end %>
+      </div>
+
+    </div>
+  </div>
+<% end %>

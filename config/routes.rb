@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   resources :admin_users
   post 'create_admin_user', :to => 'admin_users#create', :as => 'create_admin_user'
-  
+  get 'users/:id/:step_number', :to => 'users#edit', :as => 'user_step'
+
   # Login
   resources :sessions
   # Logout

@@ -1,2 +1,2 @@
-<%= link_to "Editar", edit_admin_user_path(object), :class => "btn btn-success"%>
-<%= link_to "Excluir", edit_user_path(object), :class => "btn btn-danger", :"data-confirm" => 'Tem certeza que deseja excluir', :method => :delete %>
+<%= link_to "Editar", object.profile_id!=3 ? edit_admin_user_path(object) : user_step_path(object, 1), :class => "btn btn-success"%>
+<%= link_to "Excluir", object.profile_id!=2 ? admin_user_path(object) : user_path(object), :class => "btn btn-danger", :"data-confirm" => 'Tem certeza que deseja excluir', :method => :delete %>
