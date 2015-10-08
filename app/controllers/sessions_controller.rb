@@ -20,8 +20,21 @@ class SessionsController < ApplicationController
 
   		else	
 	  		session[:user_id] = user.id
-				gflash :success => "Bem-vindo!"
-	  		redirect_to admin_users_path
+
+        #not is client
+        if user.profile_id != 3
+
+				  gflash :success => "Bem-vindo!"
+  	  		redirect_to admin_users_path
+
+        else
+
+          gflash :success => "Bem-vindo!"
+          #verificar rota correta
+          redirect_to user_step_path(user.id, 1)
+
+        end
+
 	  	end
   			
   	else

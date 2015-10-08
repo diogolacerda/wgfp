@@ -11,29 +11,31 @@
           <li>
             <a  href="<%= root_path%>">Home</a>
           </li>
-          <!-- Single button -->
-          <li>
-            <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Ficha cadastro<span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="">Dados Pessoais</a>
-              </li>
-              <li>
-                <a href="">Objetivo</a>
-              </li>
-              <li>
-                <a href="">Perfil de investidor</a>
-              </li>
-              <li>
-                <a href="">Dados Complementares</a>
-              </li>
-              <li>
-                <a href="">Senha de Acesso</a>
-              </li>
-            </ul>
-          </li>
+          <!-- Cliente -->
+          <% if @current_user == 3 %>
+            <li>
+              <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Ficha cadastro<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="<%= user_step_path(@current_user, 1)%>">Dados Pessoais</a>
+                </li>
+                <li>
+                  <a href="<%= user_step_path(@current_user, 2)%>">Objetivo</a>
+                </li>
+                <li>
+                  <a href="<%= user_step_path(@current_user, 3)%>">Perfil de investidor</a>
+                </li>
+                <li>
+                  <a href="<%= user_step_path(@current_user, 4)%>">Dados Complementares</a>
+                </li>
+                <li>
+                  <a href="<%= user_step_path(@current_user, 5)%>">Senha de Acesso</a>
+                </li>
+              </ul>
+            </li>
+          <%end%>
 
           <li>
             <a  href="<%= root_path%>">Perfil</a>
