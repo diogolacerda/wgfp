@@ -48,7 +48,7 @@ RSpec.configure do |config|
   config.include(EmailSpec::Matchers)
   config.include LoginMacros
   #config.include WaitForAjax
-  #config.include BaypassInputMask
+  config.include BaypassInputMask
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

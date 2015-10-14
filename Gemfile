@@ -17,7 +17,10 @@ gem 'datagrid'
 gem "kaminari"
 
 # Validaçàp de CPF e CNPJ
-#gem 'brazilian-rails'
+gem 'brazilian-rails'
+
+# Busca CEP Correios
+gem 'correios-cep'
 
 group :development, :test do
   gem 'byebug'

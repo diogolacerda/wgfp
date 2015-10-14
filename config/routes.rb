@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get 'home/index'
   root 'home#index'
 
+  # AJAX
+  get 'busca_cep', :to => 'ajax#busca_cep', :as => 'busca_cep'
+  
   resources :admin_users
   post 'create_admin_user', :to => 'admin_users#create', :as => 'create_admin_user'
   get 'users/:id/:step_number', :to => 'users#edit', :as => 'user_step'

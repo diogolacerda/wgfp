@@ -20,6 +20,28 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
   end
 
+  def update
+    @user = User.find params[:id]
+    @user.step = user_params[:step]
+    step = user_params[:step]
+    
+    if @user.update(user_params)
+      
+      gflash :success
+     
+      step += 1  
+      redirect_to_path =  user_step_path(@user, step)
+
+      redirect_to redirect_to_path
+
+    else
+      
+      gflash :now, :error => @user.errors.full_messages.join('<br>')
+      render :edit
+
+    end
+  end
+
   def create
   	@user = User.new user_params
     

@@ -9,7 +9,8 @@ feature "Login" do
       adm = create(:user, :admin)
       login(adm.email, adm.password)
       expect(page).to have_content "Bem-vindo!"
-      expect(page).not_to have_content "Ficha cadastro"
+      expect(page).not_to have_content "Ficha de cadastro"
+      expect(page).to have_content 'Você está na conta de:'
       sleep 1
       expect(current_path).to eq admin_users_path
     end
@@ -21,7 +22,8 @@ feature "Login" do
       adm = create(:user, :consult)
       login(adm.email, adm.password)
       expect(page).to have_content "Bem-vindo!"
-      expect(page).not_to have_content "Ficha cadastro"
+      expect(page).not_to have_content "Ficha de cadastro"
+      expect(page).to have_content 'Você está na conta de:'
       sleep 1
       expect(current_path).to eq admin_users_path
     end
@@ -49,6 +51,8 @@ feature "Login" do
     	user = create(:user, :incomplete_register, :client)
     	login(user.email, user.password)
     	expect(page).to have_content 'Bem-vindo!'
+      expect(page).to have_content 'Ficha de cadastro'
+      expect(page).not_to have_content 'Você está na conta de:'
       sleep 1
     	expect(current_path).to eql(user_step_path(user, 1)) 
     end
@@ -57,6 +61,8 @@ feature "Login" do
     	user = create(:user, :complete_register, :client)
     	login(user.email, user.password)
     	expect(page).to have_content 'Bem-vindo!'
+      expect(page).to have_content 'Ficha de cadastro'
+      expect(page).not_to have_content 'Você está na conta de:'
       sleep 1
     	expect(current_path).to eq root_path
     end

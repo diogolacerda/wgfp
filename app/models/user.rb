@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
   attr_accessor :skip_validate_pass
+  attr_accessor :step
 
   belongs_to :state
   belongs_to :city

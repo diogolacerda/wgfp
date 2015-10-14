@@ -36,6 +36,7 @@ FactoryGirl.define do
 		
 		trait :incomplete_register do
 
+			profile_id 3
 			email_secondary ""
 			cpf ""
 			rg ""
@@ -56,6 +57,7 @@ FactoryGirl.define do
 			bank nil
 			agency ""
 			account ""
+			complement ""
 
 		end
 
@@ -74,6 +76,7 @@ FactoryGirl.define do
 			zip_code {Faker::Address.zip_code}
 			street {Faker::Address.street_address}
 			district {Faker::Address.city}
+			complement {Faker::Address.secondary_address}
 			association :city
 			association :state
 			association :graduation
