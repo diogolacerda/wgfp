@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
  
-	skip_before_filter :authenticate_user, :except => [:index, :edit]
+	skip_before_filter :authenticate_user, :except => [:index, :edit, :update]
 
   def activate_account
     @user = User.find_by_activation_token params[:activation_token]
@@ -23,16 +23,14 @@ class UsersController < ApplicationController
   def update
     @user = User.find params[:id]
     @user.step = user_params[:step]
+    @user.skip_validate_pass = true
     step = user_params[:step]
     
     if @user.update(user_params)
       
       gflash :success
      
-      step += 1  
-      redirect_to_path =  user_step_path(@user, step)
-
-      redirect_to redirect_to_path
+      redirect_to user_step_path(@user, step.to_i + 1)
 
     else
       
@@ -115,7 +113,21 @@ class UsersController < ApplicationController
       :name,
       :email,
       :password,
-      :password_confirmation
+      :password_confirmation,
+      :consultant_id,
+      :email_secondary,
+      :phone,
+      :celphone,
+      :birthday,
+      :civil_state_id,
+      :nationality_id,
+      :profession,
+      :zip_code,
+      :complement,
+      :cpf,
+      :rg,
+      :issuer,
+      :step
     )
   end
 

@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   def only_admin
     if current_user.profile_id != 1
-      redirect_to root_path
+      redirect_to admin_users_path
     end
   end
 

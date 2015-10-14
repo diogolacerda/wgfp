@@ -30,4 +30,22 @@ class User < ActiveRecord::Base
 
   validates_length_of :password, :minimum => 6, if: Proc.new { |user| user.skip_validate_pass != true }
 
+  # --- Conditional Validation --- #
+
+  #Step 1
+  validates_presence_of :email_secondary, 
+    :celphone, 
+    :birthday, 
+    :civil_state_id, 
+    :nationality_id, 
+    :profession,
+    :cpf,
+    :rg,
+    :issuer,
+    :zip_code,
+    :street,
+    :state_id,
+    :city_id,
+    :district, if: Proc.new { |user| user.step.to_i == 1 }
+
 end

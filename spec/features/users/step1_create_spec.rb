@@ -15,6 +15,29 @@ feature 'Create/Edit - Step 1' do
 		create(:city, :name => 'Belo Horizonte')
 	end
 
+	scenario 'invalid input', js: true do
+
+		login(user_client.email, user_client.password)
+	  visit user_step_path(user_client, 1)
+	  sleep 1
+		click_button "Salvar e ir para o próximo"
+		sleep 1
+		expect(page).to have_content "Email secundário não pode ficar em branco"
+    expect(page).to have_content "Celular não pode ficar em branco"
+		expect(page).to have_content "Data de nascimento não pode ficar em branco"
+		expect(page).to have_content "Estado civil não pode ficar em branco"
+		expect(page).to have_content "Nacionalidade não pode ficar em branco"
+		expect(page).to have_content "Profissão não pode ficar em branco"
+    expect(page).to have_content "CPF não pode ficar em branco"
+		expect(page).to have_content "RG não pode ficar em branco"
+		expect(page).to have_content "Orgão emissor não pode ficar em branco"
+    expect(page).to have_content "CEP não pode ficar em branco"
+    expect(page).to have_content "Endereço não pode ficar em branco"
+    expect(page).to have_content "Bairro não pode ficar em branco"
+    expect(page).to have_content "Cidade não pode ficar em branco"
+    expect(page).to have_content "Estado não pode ficar em branco"
+
+	end
 
 	context 'Administrator' do
 
@@ -35,16 +58,17 @@ feature 'Create/Edit - Step 1' do
 			select Nationality.first.name, from: "user[nationality_id]"
 			fill_in 'user[profession]', with: Faker::Company.buzzword
 			fill_cep
-			sleep 1
+			sleep 2
 			fill_in 'user[complement]', with: Faker::Address.secondary_address
 			fill_cpf
 			fill_in 'user[rg]', with: "MG 12.231.232"
 			fill_in 'user[issuer]', with: Faker::Address.state_abbr
 
 			click_button "Salvar e ir para o próximo"
-			sleep 1
+			sleep 2
 			expect(page).to have_content "Salvo com sucesso"
-			expect(current_path).to eql(user_step_path(user_client, 2)) 
+			sleep 1
+			expect(current_path).to eql(user_step_path(user_client, 2))
 
 		end
 
@@ -71,23 +95,21 @@ feature 'Create/Edit - Step 1' do
 			select Nationality.first.name, from: "user[nationality_id]"
 			fill_in 'user[profession]', with: Faker::Company.buzzword
 			fill_cep
-			sleep 1
+			sleep 2
 			fill_in 'user[complement]', with: Faker::Address.secondary_address
 			fill_cpf
 			fill_in 'user[rg]', with: "MG 12.231.232"
 			fill_in 'user[issuer]', with: Faker::Address.state_abbr
 
 			click_button "Salvar e ir para o próximo"
-			sleep 1
+			sleep 2
 			expect(page).to have_content "Salvo com sucesso"
+			sleep 1
 			expect(current_path).to eql(user_step_path(user_client, 2)) 
 
 
 		end
 
-		scenario 'invalid' do
-
-		end
 
 	end		
 
