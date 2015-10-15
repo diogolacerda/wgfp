@@ -47,7 +47,7 @@ RSpec.configure do |config|
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
   config.include LoginMacros
-  #config.include WaitForAjax
+  config.include WaitForAjax
   config.include BaypassInputMask
 
   # RSpec Rails can automatically mix in different behaviours to your tests

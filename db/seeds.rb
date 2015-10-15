@@ -20,6 +20,12 @@ Profile.create([
   {id: 3, name: 'Cliente'}
 ])
 
+Objective.create([
+  {id: 1, name: 'Quero eliminar e reestruturar minhas dívidas'},
+  {id: 2, name: 'Quero ajuda no controle do meu orçamento mensal'},
+  {id: 3, name: 'Quero ajuda e assessoria de investimentos'}
+])
+
 # Estados
 State.create([
   {id: 1, name: 'Acre', acronym: 'AC'},
