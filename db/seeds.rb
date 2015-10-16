@@ -26,6 +26,24 @@ Objective.create([
   {id: 3, name: 'Quero ajuda e assessoria de investimentos'}
 ])
 
+InvestmentQuestion.create([
+  {id: 1, question: 'Qual é a resposta para a pergunta número 1?'},
+  {id: 2, question: 'Qual é a resposta para a pergunta número 2?'},
+  {id: 3, question: 'Qual é a resposta para a pergunta número 3?'}
+])
+
+InvestmentAnswer.create([
+  {investment_question_id: 1, answer: 'Resposta 1-1'},
+  {investment_question_id: 1, answer: 'Resposta 1-2'},
+  {investment_question_id: 1, answer: 'Resposta 1-3'},
+  {investment_question_id: 2, answer: 'Resposta 2-1'},
+  {investment_question_id: 2, answer: 'Resposta 2-2'},
+  {investment_question_id: 2, answer: 'Resposta 2-3'},
+  {investment_question_id: 3, answer: 'Resposta 3-1'},
+  {investment_question_id: 3, answer: 'Resposta 3-2'},
+  {investment_question_id: 3, answer: 'Resposta 3-3'}
+])
+
 # Estados
 State.create([
   {id: 1, name: 'Acre', acronym: 'AC'},
