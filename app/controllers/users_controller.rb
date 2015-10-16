@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
- 
+
 	skip_before_filter :authenticate_user, :except => [:index, :edit, :update]
 
   def activate_account
@@ -18,6 +18,8 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find params[:id]
+    # Todas perguntas de perfil do investidor
+    @investiment_questions = InvestmentQuestion.all
   end
 
   def update
@@ -25,15 +27,15 @@ class UsersController < ApplicationController
     @user.step = user_params[:step]
     @user.skip_validate_pass = true
     step = user_params[:step]
-    
+
     if @user.update(user_params)
-      
+
       gflash :success
-     
+
       redirect_to user_step_path(@user, step.to_i + 1)
 
     else
-      
+
       gflash :now, :error => @user.errors.full_messages.join('<br>')
       render :edit
 
@@ -42,7 +44,7 @@ class UsersController < ApplicationController
 
   def create
   	@user = User.new user_params
-    
+
     # Define o user como cliente
     @user.profile_id = 3
 
@@ -74,7 +76,7 @@ class UsersController < ApplicationController
       render 'recovery_pass'
 
   	end
-  end	
+  end
 
   def edit_pass
   	if params[:recovery_token]

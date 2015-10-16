@@ -6,11 +6,17 @@
     <div class="row">
 
       <div class="form-group">
-        <%= f.input :investment_question, label: false%>
-        <%= f.association :investment_answers, label: false%>
+        <!-- Loop por cada pergunta de perfil de investidor -->
+        <% @investiment_questions.each_with_index do |iq, index| %>
+          <br><br>
+          Questão - <%= index + 1 %>
+          <br>
+          <!-- Texto da pergunta -->
+          <%= iq.question %>
+          <!-- Possiveis respostas para a pergunta -->
+          <%= f.association :investment_answers, label: false, as: :radio_buttons, collection: InvestmentAnswer.where(:investment_question_id => iq.id), :label_method => lambda { |aq| aq.answer } %>
+        <% end %>
       </div>
-
-     
 
       <div class="col-xs-12">
           <button type="submit" class="btn btn-primary pull-right">Salvar e ir para o próximo</button>
