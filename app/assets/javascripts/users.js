@@ -36,4 +36,15 @@ $(document).ready(function() {
     );
   });
 
+  /*
+  Impede que se marque mais de uma opção para cada questão de Perfil do investidor
+  */
+  $('input.check_boxes').on('change', function() {
+    // Encontra a classe que identifica qual questão teve a resposta selecionada
+    span_class = $(this).closest('span').attr("class")
+    span_class = span_class.split(" ")
+    // Desmarca todos checkboxes da questão exceto o que foi marcado
+    $("."+span_class[1]+" input[type='checkbox']").not(this).prop('checked', false);
+  });
+
 });
